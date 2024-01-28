@@ -1,0 +1,65 @@
+17:23:45.413 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.customerproduct.customerproductapi.CustomerProductApiApplicationTests]: CustomerProductApiApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:23:45.570 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.customerproduct.customerproductapi.CustomerProductApiApplication for test class com.customerproduct.customerproductapi.CustomerProductApiApplicationTests
+17:23:45.828 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
+17:23:46.185 [main] INFO  c.c.c.CustomerProductApiApplicationTests - Starting CustomerProductApiApplicationTests using Java 17.0.4 with PID 3904 (started by mac in /Users/mac/Desktop/2024/etiqa/customerproduct-api)
+17:23:46.187 [main] INFO  c.c.c.CustomerProductApiApplicationTests - No active profile set, falling back to 1 default profile: "default"
+17:23:47.066 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17:23:47.135 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 61 ms. Found 2 JPA repository interfaces.
+17:23:47.615 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+17:23:47.672 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.1.Final
+17:23:47.720 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+17:23:47.985 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+17:23:48.018 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+17:23:48.401 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@54275b5d
+17:23:48.404 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+17:23:48.463 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+17:23:49.402 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+17:23:49.450 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+17:23:50.262 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17:23:50.655 [main] INFO  c.c.c.CustomerProductApiApplicationTests - Started CustomerProductApiApplicationTests in 4.842 seconds (process running for 6.606)
+17:23:51.286 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+17:23:51.288 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+17:23:51.298 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+17:23:55.280 [restartedMain] INFO  c.c.c.CustomerProductApiApplication - Starting CustomerProductApiApplication using Java 17.0.4 with PID 4004 (/Users/mac/Desktop/2024/etiqa/customerproduct-api/target/classes started by mac in /Users/mac/Desktop/2024/etiqa/customerproduct-api)
+17:23:55.284 [restartedMain] INFO  c.c.c.CustomerProductApiApplication - No active profile set, falling back to 1 default profile: "default"
+17:23:55.353 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+17:23:55.354 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+17:23:56.109 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17:23:56.175 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 58 ms. Found 2 JPA repository interfaces.
+17:23:56.877 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+17:23:56.886 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+17:23:56.889 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+17:23:56.890 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.18]
+17:23:56.940 [restartedMain] INFO  o.a.c.c.C.[.[.[/customerproduct-api] - Initializing Spring embedded WebApplicationContext
+17:23:56.942 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1586 ms
+17:23:57.096 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+17:23:57.153 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.1.Final
+17:23:57.191 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+17:23:57.440 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+17:23:57.466 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+17:23:57.831 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3d788634
+17:23:57.833 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+17:23:57.942 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+17:23:58.844 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+17:23:58.897 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+17:23:59.577 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17:23:59.934 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+17:23:59.948 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+17:23:59.967 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/customerproduct-api'
+17:23:59.984 [restartedMain] INFO  c.c.c.CustomerProductApiApplication - Started CustomerProductApiApplication in 5.115 seconds (process running for 5.912)
+17:24:26.254 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[.[.[/customerproduct-api] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+17:24:26.255 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+17:24:26.257 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+17:24:26.376 [http-nio-8080-exec-2] INFO  c.c.c.controller.CustomerController - Received request to create customer: com.customerproduct.customerproductapi.dto.CustomerDTO@3c4ebec0
+17:24:26.395 [http-nio-8080-exec-2] INFO  c.c.c.service.CustomerService - Validating email does not exist: john.ss@example.com
+17:24:26.652 [http-nio-8080-exec-2] INFO  c.c.c.service.CustomerService - Customer created successfully: com.customerproduct.customerproductapi.entity.Customer@7320ee01
+17:24:26.670 [http-nio-8080-exec-2] INFO  c.c.c.controller.CustomerController - Customer created successfully: com.customerproduct.customerproductapi.dto.CustomerDTO@4cf32c11
+17:25:02.645 [http-nio-8080-exec-3] INFO  c.c.c.controller.CustomerController - Received request to update customer with ID: 17
+17:25:02.658 [http-nio-8080-exec-3] INFO  c.c.c.service.CustomerService - Updating customer with ID: 17
+17:25:02.725 [http-nio-8080-exec-3] INFO  c.c.c.service.CustomerService - Customer updated successfully: com.customerproduct.customerproductapi.entity.Customer@3fda4057
+17:25:02.726 [http-nio-8080-exec-3] INFO  c.c.c.controller.CustomerController - Customer updated successfully: com.customerproduct.customerproductapi.dto.CustomerDTO@600340fb
+19:44:49.603 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h21s586ms).
+22:20:24.820 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h35m35s179ms).
+22:21:47.498 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=52s457ms).
+22:51:26.291 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=29m8s783ms).
+23:12:15.102 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m18s751ms).

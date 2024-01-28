@@ -1,0 +1,28 @@
+server:
+  servlet:
+    context-path: /customerproduct-api
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/dev-customerproduct
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+
+
+  application:
+    name: customerproduct-api
+
+logging:
+  file:
+    path: /Users/mac/Desktop/2024/etiqa/logs
+  level:
+    com.customerproduct.customerproductapi: DEBUG
+
