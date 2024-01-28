@@ -1,17 +1,17 @@
 package com.customerproduct.customerproductapi.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.*;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class CustomerDTO {
 
     private Long id;
@@ -29,9 +29,9 @@ public class CustomerDTO {
     @NotBlank(message = "Phone number should not be empty")
     private String phoneNumber;
 
-    private int familyMembers;
+    private List<CustomerDTO> familyMembers;
 
-    public void setFamilyMembers(int familyMembers) {
+    public void setFamilyMembers(List<CustomerDTO> familyMembers) {
         this.familyMembers = familyMembers;
     }
 }

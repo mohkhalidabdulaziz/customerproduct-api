@@ -3,6 +3,8 @@ package com.customerproduct.customerproductapi.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 
 @Entity
 @Table(name = "customer")
@@ -27,12 +29,13 @@ public class Customer {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "office_email")
-    private String officeEmail;
+    @Column(name = "phone_number", nullable = false)
+    private String phoneNumber;
 
-    @Column(name = "personal_email")
-    private String personalEmail;
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Customer> familyMembers;
 
-    @Column(name = "family_members")
-    private int familyMembers;
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    private Customer parent;
 }

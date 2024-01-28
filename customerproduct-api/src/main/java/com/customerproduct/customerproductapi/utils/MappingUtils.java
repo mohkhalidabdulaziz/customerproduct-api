@@ -13,6 +13,9 @@ import org.springframework.stereotype.Component;
 
 import jakarta.annotation.PostConstruct;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 @RequiredArgsConstructor
 public class MappingUtils {
@@ -34,10 +37,11 @@ public class MappingUtils {
         return modelMapper.map(customerDTO, Customer.class);
     }
 
-    private Converter<Integer, Integer> familyMembersConverter() {
-        return ctx -> ctx.getSource() == null ? 0 : ctx.getSource();
+    private Converter<List<Customer>, List<CustomerDTO>> familyMembersConverter() {
+        return ctx -> ctx.getSource() == null ? null : ctx.getSource().stream()
+                .map(customer -> convertToDTO(customer))
+                .collect(Collectors.toList());
     }
-
 
     public void validateEmailNotExists(String email) {
         if (customerRepository.findByEmail(email).isPresent()) {

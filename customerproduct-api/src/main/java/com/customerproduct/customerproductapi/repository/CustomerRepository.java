@@ -4,6 +4,7 @@ import com.customerproduct.customerproductapi.entity.Customer;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -11,4 +12,6 @@ import java.util.Optional;
 public interface CustomerRepository extends CrudRepository<Customer, Long> {
 
     Optional<Customer> findByEmail(String email);
+
+    List<Customer> findByParentId(Long id);
 }

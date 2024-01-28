@@ -33,6 +33,12 @@ public class CustomerService {
             mappingUtils.validateEmailNotExists(customerDTO.getEmail());
 
             Customer customer = mappingUtils.convertToEntity(customerDTO);
+
+            // Set the parent for each family member
+            if (customer.getFamilyMembers() != null) {
+                customer.getFamilyMembers().forEach(familyMember -> familyMember.setParent(customer));
+            }
+
             Customer createdCustomer = customerRepository.save(customer);
 
             logger.info("Customer created successfully: {}", createdCustomer);
@@ -55,9 +61,25 @@ public class CustomerService {
     public CustomerDTO getCustomerById(Long customerId) {
         logger.info("Fetching customer by ID: {}", customerId);
         Customer customer = customerRepository.findById(customerId).orElse(null);
-        return (customer != null) ? mappingUtils.convertToDTO(customer) : null;
+
+        if (customer != null) {
+            // Fetch family members separately to avoid recursive serialization
+            List<Customer> familyMembers = customerRepository.findByParentId(customer.getId());
+            customer.setFamilyMembers(familyMembers);
+
+            logger.info("Fetched customer by ID successfully: {}", customer);
+            return mappingUtils.convertToDTO(customer);
+        } else {
+            logger.warn("Customer not found by ID: {}", customerId);
+            throw CustomerServiceException.builder()
+                    .httpStatus(HttpStatus.NOT_FOUND)
+                    .developerMessage("Customer not found with ID: " + customerId)
+                    .userMessage("Customer not found")
+                    .build();
+        }
     }
 
+    @Transactional
     public CustomerDTO updateCustomer(Long customerId, CustomerDTO updatedCustomerDTO) {
         try {
             logger.info("Updating customer with ID: {}", customerId);
@@ -68,7 +90,19 @@ public class CustomerService {
                 modelMapper.getConfiguration().setPropertyCondition(Conditions.isNotNull());
                 modelMapper.map(updatedCustomerDTO, existingCustomer);
 
+                // Set the parent for each family member
+                if (existingCustomer.getFamilyMembers() != null) {
+                    existingCustomer.getFamilyMembers().forEach(familyMember -> {
+                        familyMember.setParent(existingCustomer);
+                    });
+
+                    // Update the parent reference for all family members
+                    customerRepository.saveAll(existingCustomer.getFamilyMembers());
+                }
+
+                // Save the updated customer (including family members with updated parent references)
                 Customer updatedCustomer = customerRepository.save(existingCustomer);
+
                 logger.info("Customer updated successfully: {}", updatedCustomer);
                 return mappingUtils.convertToDTO(updatedCustomer);
             } else {
@@ -84,6 +118,7 @@ public class CustomerService {
         }
     }
 
+
     @Transactional
     public void deleteCustomer(Long customerId) {
         try {
@@ -96,11 +131,26 @@ public class CustomerService {
                             .build());
 
             logger.info("Deleting customer: {}", customer);
+
+            // Delete the family members (cascading delete)
+            if (customer.getFamilyMembers() != null) {
+                customerRepository.deleteAll(customer.getFamilyMembers());
+            }
+
+            // Remove the parent reference from family members
+            if (customer.getFamilyMembers() != null) {
+                customer.getFamilyMembers().forEach(familyMember -> familyMember.setParent(null));
+            }
+
+            // Delete the main customer
             customerRepository.deleteById(customerId);
-            logger.info("Customer deleted successfully.");
+
+            logger.info("Customer and family members deleted successfully.");
         } catch (Exception e) {
             logger.error("Error deleting customer", e);
             throw e;
         }
     }
+
 }
+
