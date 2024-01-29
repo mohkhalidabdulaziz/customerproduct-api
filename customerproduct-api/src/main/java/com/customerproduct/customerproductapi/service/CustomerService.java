@@ -10,6 +10,8 @@ import org.modelmapper.Conditions;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -58,6 +60,7 @@ public class CustomerService {
                 .collect(Collectors.toList());
     }
 
+    @Cacheable(value = "customers", key = "#customerId")
     public CustomerDTO getCustomerById(Long customerId) {
         logger.info("Fetching customer by ID: {}", customerId);
         Customer customer = customerRepository.findById(customerId).orElse(null);
@@ -79,6 +82,7 @@ public class CustomerService {
         }
     }
 
+    @CacheEvict(value = "customers", key = "#customerId")
     @Transactional
     public CustomerDTO updateCustomer(Long customerId, CustomerDTO updatedCustomerDTO) {
         try {

@@ -9,6 +9,8 @@ import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,13 +55,14 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
-
+    @Cacheable(value = "products", key = "#productId")
     public ProductDTO getProductById(Long productId) {
         logger.info("Fetching product by ID: {}", productId);
         Product product = productRepository.findById(productId).orElse(null);
         return (product != null) ? modelMapper.map(product, ProductDTO.class) : null;
     }
 
+    @CacheEvict(value = "products", key = "#productId")
 
     public ProductDTO updateProduct(Long productId, ProductDTO updatedProductDTO) {
         try {
