@@ -2,6 +2,8 @@ server:
   servlet:
     context-path: /customerproduct-api
 spring:
+  application:
+    name: customerproduct-api
   datasource:
     url: jdbc:mysql://localhost:3306/dev-customerproduct
     username: root
@@ -14,11 +16,6 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
-
-
-
-  application:
-    name: customerproduct-api
 
 logging:
   file:
