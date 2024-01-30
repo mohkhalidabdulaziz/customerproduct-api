@@ -43,13 +43,7 @@ public class MappingUtils {
                 .collect(Collectors.toList());
     }
 
-    public void validateEmailNotExists(String email) {
-        if (customerRepository.findByEmail(email).isPresent()) {
-            throw CustomerServiceException.builder()
-                    .httpStatus(HttpStatus.CONFLICT)
-                    .developerMessage("Customer with email " + email + " already exists")
-                    .userMessage("Customer with this email already exists")
-                    .build();
-        }
+    public boolean validateEmailNotExists(String email) {
+        return !customerRepository.findByEmail(email).isPresent();
     }
 }
